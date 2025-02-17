@@ -1,104 +1,75 @@
-
-B
-B
-B
-B
-B
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Befehle</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        pre {
-            background: #333;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-    </style>
+    <title>How to Upload an HTML File to GitHub</title>
 </head>
 <body>
-    <h2>Git Befehle im Terminal</h2>
-    <pre>
-To run a command as administrator (user "root"), use "sudo &lt;command&gt;".
-See "man sudo_root" for details.
-
-danielle@danielle-VMware-Virtual-Platform:~$ sudo apt update
-[sudo] Passwort für danielle: 
-OK:1 http://ch.archive.ubuntu.com/ubuntu noble InRelease
-OK:2 http://ch.archive.ubuntu.com/ubuntu noble-updates InRelease              
-OK:3 http://ch.archive.ubuntu.com/ubuntu noble-backports InRelease            
-OK:4 http://security.ubuntu.com/ubuntu noble-security InRelease               
-Paketlisten werden gelesen… Fertig                    
-Abhängigkeitsbaum wird aufgebaut… Fertig
-Statusinformationen werden eingelesen… Fertig
-Aktualisierung für 282 Pakete verfügbar. Führen Sie »apt list --upgradable« aus, um sie anzuzeigen.
-
-danielle@danielle-VMware-Virtual-Platform:~$ sudo apt install git
-Paketlisten werden gelesen… Fertig
-Abhängigkeitsbaum wird aufgebaut… Fertig
-Statusinformationen werden eingelesen… Fertig
-Die folgenden zusätzlichen Pakete werden installiert:
-  git-man liberror-perl
-Vorgeschlagene Pakete:
-  git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb
-  git-cvs git-mediawiki git-svn
-Die folgenden NEUEN Pakete werden installiert:
-  git git-man liberror-perl
-0 aktualisiert, 3 neu installiert, 0 zu entfernen und 282 nicht aktualisiert.
-Es müssen 4.804 kB an Archiven heruntergeladen werden.
-Möchten Sie fortfahren? [J/n] J
-    </pre>
+    <h1>How to Upload an HTML File to GitHub</h1>
     
-    <h3>Repository klonen und Datei hinzufügen</h3>
-    <pre>
-danielle@danielle-VMware-Virtual-Platform:~$ git clone https://github.com/daniellelandi/mod109.git
-Cloning into 'mod109'...
-warning: Sie scheinen ein leeres Repository geklont zu haben.
+    <h2>1. Create an HTML File with Vim</h2>
+    <p>Open the terminal and create an HTML file:</p>
+    <pre><code>vim index.html</code></pre>
+    <p>Now you are in Vim.</p>
+    <ol>
+        <li>Press <code>i</code> to enter insert mode and write the following HTML code:</li>
+    </ol>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My First GitHub Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, GitHub!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>Save and exit Vim by pressing <code>ESC</code>, then <code>:wq</code> and <code>Enter</code>.</p>
 
-cd mod109
-ls -la
-
-vi demo.txt
-
-git add demo.txt
-git commit -m "Added demo.txt"
-    </pre>
+    <h2>2. Prepare Git Repository</h2>
+    <p>If you haven't cloned your repository yet, do:</p>
+    <pre><code>git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+cd YOUR_REPOSITORY</code></pre>
+    <p>If you already have a local repository:</p>
+    <pre><code>cd path/to/your/repository</code></pre>
+    <p>Or, if you want to create a new local Git repository:</p>
+    <pre><code>git init</code></pre>
     
-    <h3>Identität konfigurieren</h3>
-    <pre>
-git config --global user.email "test@test.test"
-git config --global user.name "danielle"
-    </pre>
-    
-    <h3>Datei pushen</h3>
-    <pre>
-git push origin main
-    </pre>
+    <h2>3. Move the HTML File to the Repository</h2>
+    <p>If your file is not inside the repository, move or copy it:</p>
+    <pre><code>mv ~/index.html .</code></pre>
+    <p>Or:</p>
+    <pre><code>cp ~/index.html .</code></pre>
+
+    <h2>4. Add the File to Git</h2>
+    <pre><code>git add index.html</code></pre>
+
+    <h2>5. Commit the File</h2>
+    <pre><code>git commit -m "Added index.html"</code></pre>
+    <p>If you haven't set your Git user details:</p>
+    <pre><code>git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"</code></pre>
+
+    <h2>6. Push the File to GitHub</h2>
+    <p>If your repository is already linked to GitHub:</p>
+    <pre><code>git push origin main</code></pre>
+    <p>If your branch is different (e.g., <code>master</code>, <code>dev</code>), replace <code>main</code> accordingly.</p>
+    <p>If your repository is not linked yet:</p>
+    <pre><code>git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git branch -M main
+git push -u origin main</code></pre>
+
+    <h2>7. Verify on GitHub</h2>
+    <p>Go to your GitHub repository and check if <code>index.html</code> is uploaded.</p>
+
+    <h2>Bonus: Enable GitHub Pages</h2>
+    <ol>
+        <li>Go to <strong>Settings</strong> in your GitHub repository.</li>
+        <li>Scroll down to <strong>Pages</strong>.</li>
+        <li>Select <strong>Branch: main</strong> and save.</li>
+        <li>Your site will be available at <code>https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/</code> after a few minutes.</li>
+    </ol>
+    <p>If you have any questions, let me know! 🚀</p>
 </body>
 </html>
-
-
-
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-
-
-
