@@ -1,0 +1,104 @@
+
+B
+B
+B
+B
+B
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Befehle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Git Befehle im Terminal</h2>
+    <pre>
+To run a command as administrator (user "root"), use "sudo &lt;command&gt;".
+See "man sudo_root" for details.
+
+danielle@danielle-VMware-Virtual-Platform:~$ sudo apt update
+[sudo] Passwort für danielle: 
+OK:1 http://ch.archive.ubuntu.com/ubuntu noble InRelease
+OK:2 http://ch.archive.ubuntu.com/ubuntu noble-updates InRelease              
+OK:3 http://ch.archive.ubuntu.com/ubuntu noble-backports InRelease            
+OK:4 http://security.ubuntu.com/ubuntu noble-security InRelease               
+Paketlisten werden gelesen… Fertig                    
+Abhängigkeitsbaum wird aufgebaut… Fertig
+Statusinformationen werden eingelesen… Fertig
+Aktualisierung für 282 Pakete verfügbar. Führen Sie »apt list --upgradable« aus, um sie anzuzeigen.
+
+danielle@danielle-VMware-Virtual-Platform:~$ sudo apt install git
+Paketlisten werden gelesen… Fertig
+Abhängigkeitsbaum wird aufgebaut… Fertig
+Statusinformationen werden eingelesen… Fertig
+Die folgenden zusätzlichen Pakete werden installiert:
+  git-man liberror-perl
+Vorgeschlagene Pakete:
+  git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb
+  git-cvs git-mediawiki git-svn
+Die folgenden NEUEN Pakete werden installiert:
+  git git-man liberror-perl
+0 aktualisiert, 3 neu installiert, 0 zu entfernen und 282 nicht aktualisiert.
+Es müssen 4.804 kB an Archiven heruntergeladen werden.
+Möchten Sie fortfahren? [J/n] J
+    </pre>
+    
+    <h3>Repository klonen und Datei hinzufügen</h3>
+    <pre>
+danielle@danielle-VMware-Virtual-Platform:~$ git clone https://github.com/daniellelandi/mod109.git
+Cloning into 'mod109'...
+warning: Sie scheinen ein leeres Repository geklont zu haben.
+
+cd mod109
+ls -la
+
+vi demo.txt
+
+git add demo.txt
+git commit -m "Added demo.txt"
+    </pre>
+    
+    <h3>Identität konfigurieren</h3>
+    <pre>
+git config --global user.email "test@test.test"
+git config --global user.name "danielle"
+    </pre>
+    
+    <h3>Datei pushen</h3>
+    <pre>
+git push origin main
+    </pre>
+</body>
+</html>
+
+
+
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+
+
+
