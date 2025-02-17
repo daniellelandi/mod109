@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Push Anleitung für Ubuntu Terminal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Git Push Schritt-für-Schritt-Anleitung im Ubuntu Terminal</h2>
+    
+    <h3>1. Datei mit Vim erstellen</h3>
+    <pre>
+$ vim myfile.txt
+    </pre>
+    <p>Drücke <strong>i</strong>, um in den Einfügemodus zu gelangen, schreibe den gewünschten Inhalt und speichere die Datei mit:</p>
+    <pre>
+ESC -> :wq -> Enter
+    </pre>
+
+    <h3>2. Git Repository initialisieren (falls noch nicht geschehen)</h3>
+    <pre>
+$ git init
+    </pre>
+
+    <h3>3. Datei zum Staging hinzufügen</h3>
+    <pre>
+$ git add myfile.txt
+    </pre>
+
+    <h3>4. Commit erstellen</h3>
+    <pre>
+$ git commit -m "Added myfile.txt"
+    </pre>
+
+    <h3>5. Remote Repository hinzufügen (falls nicht geschehen)</h3>
+    <pre>
+$ git remote add origin https://github.com/USERNAME/REPOSITORY.git
+    </pre>
+
+    <h3>6. Änderungen ins Remote-Repository pushen</h3>
+    <pre>
+$ git push -u origin main
+    </pre>
+    
+    <h3>7. Status überprüfen</h3>
+    <pre>
+$ git status
+    </pre>
+    <p>Falls keine Änderungen mehr vorhanden sind, wurde die Datei erfolgreich gepusht!</p>
+</body>
+</html>
+
