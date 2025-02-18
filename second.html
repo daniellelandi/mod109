@@ -9,3 +9,110 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Schritt-für-Schritt Anleitung: HTML-Datei mit Vim in GitHub hochladen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 Anleitung: Neues HTML-File mit Vim in GitHub hochladen</h1>
+        <p>Diese Anleitung zeigt, wie du eine neue HTML-Datei mit dem <strong>Vim-Editor</strong> erstellst und in dein <strong>GitHub-Repository</strong> hochlädst.</p>
+        
+        <h2>🚀 Schritt 1: In das richtige Verzeichnis wechseln</h2>
+        <p>Wechsle in dein Repository-Verzeichnis <code>mod109</code>:</p>
+        <pre>cd ~/mod109</pre>
+        <p>Falls du nicht sicher bist, überprüfe mit:</p>
+        <pre>ls -la</pre>
+        
+        <h2>📝 Schritt 2: Neue HTML-Datei mit Vim erstellen</h2>
+        <p>Öffne Vim und erstelle eine neue Datei <code>second.html</code>:</p>
+        <pre>vim second.html</pre>
+        
+        <p>Füge folgenden Code ein:</p>
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Zweite Seite&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Willkommen auf meiner zweiten Seite!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+
+        <p><strong>Speichern & Beenden:</strong></p>
+        <ol>
+            <li>Drücke <code>ESC</code>, um in den Befehlsmodus zu wechseln.</li>
+            <li>Gib <code>:wq</code> ein und drücke <code>Enter</code>.</li>
+        </ol>
+
+        <h2>📌 Schritt 3: Datei zu Git hinzufügen</h2>
+        <p>Füge die Datei dem Staging-Bereich hinzu:</p>
+        <pre>git add second.html</pre>
+        <p>Falls du alle Änderungen auf einmal hinzufügen möchtest:</p>
+        <pre>git add .</pre>
+        
+        <p>Überprüfe, ob die Datei zum Commit bereit ist:</p>
+        <pre>git status</pre>
+
+        <h2>📌 Schritt 4: Datei in Git committen</h2>
+        <p>Erstelle einen neuen Commit mit einer Nachricht:</p>
+        <pre>git commit -m "Füge second.html hinzu"</pre>
+
+        <h2>📌 Schritt 5: Datei zu GitHub hochladen</h2>
+        <p>Push die Änderungen in das Remote-Repository:</p>
+        <pre>git push origin main</pre>
+
+        <p>Falls du eine Fehlermeldung bekommst, überprüfe den Branch:</p>
+        <pre>git branch</pre>
+
+        <p>Falls nötig, setze den Upstream-Branch:</p>
+        <pre>git push --set-upstream origin main</pre>
+
+        <h2>✅ Schritt 6: Überprüfen, ob die Datei in GitHub ist</h2>
+        <p>Öffne dein Repository im Browser:</p>
+        <pre>https://github.com/&lt;dein-username&gt;/mod109</pre>
+
+        <p>✅ Falls <code>second.html</code> dort sichtbar ist, war alles erfolgreich!</p>
+
+        <h2>🎯 Fazit</h2>
+        <ul>
+            <li>📂 <code>second.html</code> wurde mit Vim erstellt.</li>
+            <li>🔄 Datei wurde mit <code>git add</code> & <code>git commit</code> gesichert.</li>
+            <li>🚀 Datei wurde mit <code>git push</code> zu GitHub hochgeladen.</li>
+            <li>📌 Datei ist jetzt in deinem Repository auf GitHub sichtbar.</li>
+        </ul>
+
+        <p><strong>Glückwunsch, du hast erfolgreich eine neue HTML-Datei mit Vim erstellt und in GitHub hochgeladen! 🎉</strong></p>
+    </div>
+</body>
+</html>
