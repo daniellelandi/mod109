@@ -1,75 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Upload an HTML File to GitHub</title>
+    <title>Mehrere HTML-Dateien in Docker mit Nginx</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>How to Upload an HTML File to GitHub</h1>
-    
-    <h2>1. Create an HTML File with Vim</h2>
-    <p>Open the terminal and create an HTML file:</p>
-    <pre><code>vim index.html</code></pre>
-    <p>Now you are in Vim.</p>
-    <ol>
-        <li>Press <code>i</code> to enter insert mode and write the following HTML code:</li>
-    </ol>
-    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;My First GitHub Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Hello, GitHub!&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-    <p>Save and exit Vim by pressing <code>ESC</code>, then <code>:wq</code> and <code>Enter</code>.</p>
+    <div class="container">
+        <h1>📖 Anleitung: Mehrere HTML-Dateien in Docker mit Nginx</h1>
+        <p>Diese Anleitung zeigt, wie du mehrere HTML-Dateien in deinem Docker-Container mit Nginx nutzen kannst.</p>
+        
+        <h2>🚀 Schritt 1: Dateien in den richtigen Ordner verschieben</h2>
+        <p>Wechsle in dein <code>mod109</code>-Verzeichnis:</p>
+        <pre>cd ~/mod109</pre>
+        
+        <p>Falls der Ordner <code>static-html-directory</code> noch nicht existiert, erstelle ihn:</p>
+        <pre>mkdir -p static-html-directory</pre>
+        
+        <p>Kopiere alle HTML-Dateien dorthin:</p>
+        <pre>
+cp index.html static-html-directory/
+cp second.html static-html-directory/
+cp third.html static-html-directory/
+        </pre>
+        
+        <p>Überprüfe, ob alle Dateien dort sind:</p>
+        <pre>ls -la static-html-directory/</pre>
 
-    <h2>2. Prepare Git Repository</h2>
-    <p>If you haven't cloned your repository yet, do:</p>
-    <pre><code>git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-cd YOUR_REPOSITORY</code></pre>
-    <p>If you already have a local repository:</p>
-    <pre><code>cd path/to/your/repository</code></pre>
-    <p>Or, if you want to create a new local Git repository:</p>
-    <pre><code>git init</code></pre>
-    
-    <h2>3. Move the HTML File to the Repository</h2>
-    <p>If your file is not inside the repository, move or copy it:</p>
-    <pre><code>mv ~/index.html .</code></pre>
-    <p>Or:</p>
-    <pre><code>cp ~/index.html .</code></pre>
-
-    <h2>4. Add the File to Git</h2>
-    <pre><code>git add index.html</code></pre>
-
-    <h2>5. Commit the File</h2>
-    <pre><code>git commit -m "Added index.html"</code></pre>
-    <p>If you haven't set your Git user details:</p>
-    <pre><code>git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"</code></pre>
-
-    <h2>6. Push the File to GitHub</h2>
-    <p>If your repository is already linked to GitHub:</p>
-    <pre><code>git push origin main</code></pre>
-    <p>If your branch is different (e.g., <code>master</code>, <code>dev</code>), replace <code>main</code> accordingly.</p>
-    <p>If your repository is not linked yet:</p>
-    <pre><code>git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-git branch -M main
-git push -u origin main</code></pre>
-
-    <h2>7. Verify on GitHub</h2>
-    <p>Go to your GitHub repository and check if <code>index.html</code> is uploaded.</p>
-
-    <h2>Bonus: Enable GitHub Pages</h2>
-    <ol>
-        <li>Go to <strong>Settings</strong> in your GitHub repository.</li>
-        <li>Scroll down to <strong>Pages</strong>.</li>
-        <li>Select <strong>Branch: main</strong> and save.</li>
-        <li>Your site will be available at <code>https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/</code> after a few minutes.</li>
-    </ol>
-    <p>If you have any questions, let me know! 🚀</p>
+        <h2>📌 Schritt 2: Dockerfile anpassen</h2>
+        <p>Falls dein <code>Dockerfile</code> nur eine einzelne Datei kopiert hat, ersetze es mit:</p>
+        <pre>
+FROM nginx
+COPY static-html-directory /usr/share/nginx/html
+        </pre>
+        <p>Speichern und Vim schließen: <code>ESC</code> → <code>:wq</code> → <code>Enter</code></p>
+        
+        <h2>🐳 Schritt 3: Docker-Image neu bauen</h2>
+        <p>Baue das Docker-Image neu:</p>
+        <pre>docker build -t some-content-nginx .</pre>
+        
+        <h2>📌 Schritt 4: Container starten</h2>
+        <p>Falls ein alter Container existiert, lösche ihn:</p>
+        <pre>
+docker stop some-nginx
+docker rm some-nginx
+        </pre>
+        
+        <p>Starte dann den neuen Container:</p>
+        <pre>docker run --name some-nginx -d -p 8080:80 some-content-nginx</pre>
+        
+        <h2>🌍 Schritt 5: Webseite im Browser testen</h2>
+        <ul>
+            <li><strong>Index-Seite:</strong> <code>http://localhost:8080</code></li>
+            <li><strong>Second-Seite:</strong> <code>http://localhost:8080/second.html</code></li>
+            <li><strong>Third-Seite:</strong> <code>http://localhost:8080/third.html</code></li>
+        </ul>
+        <p>Falls du eine VM benutzt, finde deine IP mit:</p>
+        <pre>ip a | grep inet</pre>
+        <p>Dann öffne: <code>http://&lt;VM-IP&gt;:8080</code></p>
+        
+        <h2>🎯 Fazit</h2>
+        <ul>
+            <li>📂 <code>static-html-directory</code> enthält jetzt alle HTML-Dateien.</li>
+            <li>📜 <code>Dockerfile</code> kopiert den gesamten Ordner in den Container.</li>
+            <li>🌍 Alle Seiten sind über <code>http://localhost:8080/&lt;filename&gt;.html</code> aufrufbar.</li>
+        </ul>
+        <p><strong>Jetzt läuft deine Multi-Seiten-Webseite in Docker mit Nginx! 🚀🎉</strong></p>
+    </div>
 </body>
 </html>
